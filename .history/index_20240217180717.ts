@@ -51,29 +51,17 @@ La función debe devolver true si la contraseña cumple con todos los criterios 
 */
 
 const validarContraseña = (password: string): boolean => {
-  let resultado: boolean = true
-
   //regex
+  let resultado:boolean = true
   const tieneMayuscula = (password: string) => /[A-Z]/.test(password)
   const tieneMinuscula = (password: string) => /[a-z]/.test(password)
   const tieneNumero = (password: string) => /[0-9]/.test(password)
-  const tieneCaracterEspecial = (password: string) => /[@$!%*?&]/.test(password)
-
-  if (
-     password.length < 8 ||
-    !tieneMayuscula(password) ||
-    !tieneMinuscula(password) ||
-    !tieneNumero(password) ||
-    !tieneCaracterEspecial(password)
-    //hay que llamar a las const de arriba pasando el param password, porque el .test() hace que sean funciones
-  ) {
-    resultado = false
+   if((password.length<8 )| (!tieneMayuscula) ! !tieneMinuscula | !tieneNumero ){
+    resultado = false 
   }
 
-  return resultado
+ return  resultado
 }
-
-console.log(validarContraseña("hojjjjjjjjj3la&A"))
 
 /*Reto 3
 Operaciones con Matrices:
@@ -82,8 +70,6 @@ devuelva una nueva matriz que sea el resultado de la suma de las dos matrices de
 Asegúrate de manejar correctamente los casos en los que las matrices no tengan las mismas
 dimensiones para poder realizar la operación de suma. Las matrices se representan como
 arrays bidimensionales de números.*/
-
-
 
 /*Reto 4
 Generación de Contraseñas Aleatorias:

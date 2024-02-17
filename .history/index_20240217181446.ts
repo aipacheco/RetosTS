@@ -65,7 +65,7 @@ const validarContraseña = (password: string): boolean => {
     !tieneMinuscula(password) ||
     !tieneNumero(password) ||
     !tieneCaracterEspecial(password)
-    //hay que llamar a las const de arriba pasando el param password, porque el .test() hace que sean funciones
+    //hay que llamar a password 
   ) {
     resultado = false
   }
@@ -82,8 +82,6 @@ devuelva una nueva matriz que sea el resultado de la suma de las dos matrices de
 Asegúrate de manejar correctamente los casos en los que las matrices no tengan las mismas
 dimensiones para poder realizar la operación de suma. Las matrices se representan como
 arrays bidimensionales de números.*/
-
-
 
 /*Reto 4
 Generación de Contraseñas Aleatorias:

@@ -29,10 +29,11 @@ const UserRoles: { [key: string]: Role } = {
 console.log(UserRoles)
 
 const getRoleFromRoleName = (role: string): Role | undefined => {
+
   let result = UserRoles[role] ? UserRoles[role] : undefined
-  //   if (UserRoles[role]){
-  //     return UserRoles[role]
-  //   }else return undefined
+//   if (UserRoles[role]){
+//     return UserRoles[role]
+//   }else return undefined
   return result
 }
 //el uso de [] en userrole es para apuntar a la clave de ese objeto, que es COMO un array de objs
@@ -50,30 +51,12 @@ cumple con los siguientes criterios para ser considerada una contraseña segura:
 La función debe devolver true si la contraseña cumple con todos los criterios y false en caso contrario.
 */
 
-const validarContraseña = (password: string): boolean => {
-  let resultado: boolean = true
+const validarContraseña = (password: string):boolean=>{
 
-  //regex
-  const tieneMayuscula = (password: string) => /[A-Z]/.test(password)
-  const tieneMinuscula = (password: string) => /[a-z]/.test(password)
-  const tieneNumero = (password: string) => /[0-9]/.test(password)
-  const tieneCaracterEspecial = (password: string) => /[@$!%*?&]/.test(password)
+    if 
 
-  if (
-     password.length < 8 ||
-    !tieneMayuscula(password) ||
-    !tieneMinuscula(password) ||
-    !tieneNumero(password) ||
-    !tieneCaracterEspecial(password)
-    //hay que llamar a las const de arriba pasando el param password, porque el .test() hace que sean funciones
-  ) {
-    resultado = false
-  }
-
-  return resultado
+return  resultado
 }
-
-console.log(validarContraseña("hojjjjjjjjj3la&A"))
 
 /*Reto 3
 Operaciones con Matrices:
@@ -82,8 +65,6 @@ devuelva una nueva matriz que sea el resultado de la suma de las dos matrices de
 Asegúrate de manejar correctamente los casos en los que las matrices no tengan las mismas
 dimensiones para poder realizar la operación de suma. Las matrices se representan como
 arrays bidimensionales de números.*/
-
-
 
 /*Reto 4
 Generación de Contraseñas Aleatorias:

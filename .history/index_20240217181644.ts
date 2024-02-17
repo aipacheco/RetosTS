@@ -83,8 +83,6 @@ Asegúrate de manejar correctamente los casos en los que las matrices no tengan 
 dimensiones para poder realizar la operación de suma. Las matrices se representan como
 arrays bidimensionales de números.*/
 
-
-
 /*Reto 4
 Generación de Contraseñas Aleatorias:
 Escribe una función llamada generarContraseña que tome un parámetro longitud de tipo
