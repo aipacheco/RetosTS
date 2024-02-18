@@ -70,11 +70,11 @@ const validarContraseña = (password: string): boolean => {
   ) {
     resultado = false
   }
-
+  
   return resultado
 }
 
-console.log("Validador de contraseña: ", validarContraseña("hojjjjjjjjj3la&A"))
+console.log("Validador de contraseña: ",validarContraseña("hojjjjjjjjj3la&A"))
 
 /*Reto 3
 Operaciones con Matrices:
@@ -102,8 +102,8 @@ const generarContraseña = (longitud: number): string => {
   let pass: string = ""
   const characters: string =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*"
-  const charactersLength: number = characters.length
-  let counter: number = 0
+  const charactersLength:number = characters.length
+  let counter:number = 0
   while (counter < longitud) {
     pass += characters.charAt(Math.floor(Math.random() * charactersLength))
     counter += 1

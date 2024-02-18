@@ -76,6 +76,7 @@ const validarContraseña = (password: string): boolean => {
 
 console.log("Validador de contraseña: ", validarContraseña("hojjjjjjjjj3la&A"))
 
+
 /*Reto 3
 Operaciones con Matrices:
 Escribe una función llamada sumarMatrices que tome dos matrices como argumentos y

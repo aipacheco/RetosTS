@@ -53,28 +53,39 @@ La función debe devolver true si la contraseña cumple con todos los criterios 
 const validarContraseña = (password: string): boolean => {
   let resultado: boolean = true
 
-  //regex
-  const tieneMayuscula = (password: string) => /[A-Z]/.test(password)
-  const tieneMinuscula = (password: string) => /[a-z]/.test(password)
-  const tieneNumero = (password: string) => /[0-9]/.test(password)
-  const tieneCaracterEspecial = (password: string) => /[@$!%*?&]/.test(password)
+  // //regex
+  // const tieneMayuscula = (password: string) => /[A-Z]/.test(password)
+  // const tieneMinuscula = (password: string) => /[a-z]/.test(password)
+  // const tieneNumero = (password: string) => /[0-9]/.test(password)
+  // const tieneCaracterEspecial = (password: string) => /[@$!%*?&]/.test(password)
+
+  // if (
+  //   password.length < 8 ||
+  //   !tieneMayuscula(password) ||
+  //   !tieneMinuscula(password) ||
+  //   !tieneNumero(password) ||
+  //   !tieneCaracterEspecial(password)
+
+  //   //hay que llamar a las funciones arrow de arriba pasando el param password
+  // ) {
+  //   resultado = false
+  // }
+  
+  const caracteresPedidos:string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*"
+
 
   if (
     password.length < 8 ||
-    !tieneMayuscula(password) ||
-    !tieneMinuscula(password) ||
-    !tieneNumero(password) ||
-    !tieneCaracterEspecial(password)
+    !caracteresPedidos.includes(password)
 
-    //hay que llamar a las funciones arrow de arriba pasando el param password
+    //hay que llamar a las const de arriba pasando el param password, porque el .test() hace que sean funciones
   ) {
     resultado = false
   }
-
   return resultado
 }
 
-console.log("Validador de contraseña: ", validarContraseña("hojjjjjjjjj3la&A"))
+console.log(validarContraseña("hojjjjjjjjj3la&A"))
 
 /*Reto 3
 Operaciones con Matrices:
@@ -102,8 +113,8 @@ const generarContraseña = (longitud: number): string => {
   let pass: string = ""
   const characters: string =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*"
-  const charactersLength: number = characters.length
-  let counter: number = 0
+  const charactersLength:number = characters.length
+  let counter:number = 0
   while (counter < longitud) {
     pass += characters.charAt(Math.floor(Math.random() * charactersLength))
     counter += 1

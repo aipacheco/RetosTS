@@ -65,8 +65,7 @@ const validarContraseña = (password: string): boolean => {
     !tieneMinuscula(password) ||
     !tieneNumero(password) ||
     !tieneCaracterEspecial(password)
-
-    //hay que llamar a las funciones arrow de arriba pasando el param password
+    //hay que llamar a las const de arriba pasando el param password, porque el .test() hace que sean funciones
   ) {
     resultado = false
   }
@@ -74,7 +73,7 @@ const validarContraseña = (password: string): boolean => {
   return resultado
 }
 
-console.log("Validador de contraseña: ", validarContraseña("hojjjjjjjjj3la&A"))
+console.log(validarContraseña("hojjjjjjjjj3la&A"))
 
 /*Reto 3
 Operaciones con Matrices:
@@ -102,9 +101,9 @@ const generarContraseña = (longitud: number): string => {
   let pass: string = ""
   const characters: string =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*"
-  const charactersLength: number = characters.length
-  let counter: number = 0
-  while (counter < longitud) {
+  const charactersLength = characters.length
+  let counter:number = 0
+  while (counter < length) {
     pass += characters.charAt(Math.floor(Math.random() * charactersLength))
     counter += 1
   }
@@ -112,7 +111,7 @@ const generarContraseña = (longitud: number): string => {
   return pass
 }
 
-console.log(generarContraseña(12))
+console.log(generarContraseña())
 
 /*Reto 5
 Validación de Direcciones de Correo Electrónico:

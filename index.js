@@ -36,12 +36,16 @@ const validarContraseña = (password) => {
         !tieneMayuscula(password) ||
         !tieneMinuscula(password) ||
         !tieneNumero(password) ||
-        !tieneCaracterEspecial(password)) {
+        !tieneCaracterEspecial(password)
+    //hay que llamar a las funciones arrow de arriba pasando el param password
+    ) {
         resultado = false;
     }
     return resultado;
 };
-console.log(validarContraseña("hojjjjjjjjj3la&A"));
+console.log("Validador de contraseña: ", validarContraseña("hojjjjjjjjj3la&A"));
+console.dir("Validador de contraseña: dir", validarContraseña("hojjjjjjjjj3la&A"));
+console.info("Validador de contraseña: info", validarContraseña("hojjjjjjjjj3la&A"));
 /*Reto 3
 Operaciones con Matrices:
 Escribe una función llamada sumarMatrices que tome dos matrices como argumentos y
@@ -49,6 +53,9 @@ devuelva una nueva matriz que sea el resultado de la suma de las dos matrices de
 Asegúrate de manejar correctamente los casos en los que las matrices no tengan las mismas
 dimensiones para poder realizar la operación de suma. Las matrices se representan como
 arrays bidimensionales de números.*/
+const matriz1 = [[], []];
+const matriz2 = [[], []];
+const sumarMatrices = () => { };
 /*Reto 4
 Generación de Contraseñas Aleatorias:
 Escribe una función llamada generarContraseña que tome un parámetro longitud de tipo
@@ -58,6 +65,18 @@ requisitos:
 ● Debe contener al menos un número.
 ● Debe contener al menos un carácter especial de la siguiente lista: !@#$%^&*.
 */
+const generarContraseña = (longitud) => {
+    let pass = "";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < longitud) {
+        pass += characters.charAt(Math.floor(Math.random() * charactersLength));
+        counter += 1;
+    }
+    return pass;
+};
+console.log(generarContraseña(12));
 /*Reto 5
 Validación de Direcciones de Correo Electrónico:
 Escribe una función llamada validarCorreoElectrónico que tome una cadena como argumento y

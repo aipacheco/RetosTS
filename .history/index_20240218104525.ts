@@ -60,13 +60,12 @@ const validarContraseña = (password: string): boolean => {
   const tieneCaracterEspecial = (password: string) => /[@$!%*?&]/.test(password)
 
   if (
-    password.length < 8 ||
+     password.length < 8 ||
     !tieneMayuscula(password) ||
     !tieneMinuscula(password) ||
     !tieneNumero(password) ||
     !tieneCaracterEspecial(password)
-
-    //hay que llamar a las funciones arrow de arriba pasando el param password
+    //hay que llamar a las const de arriba pasando el param password, porque el .test() hace que sean funciones
   ) {
     resultado = false
   }
@@ -74,7 +73,7 @@ const validarContraseña = (password: string): boolean => {
   return resultado
 }
 
-console.log("Validador de contraseña: ", validarContraseña("hojjjjjjjjj3la&A"))
+console.log(validarContraseña("hojjjjjjjjj3la&A"))
 
 /*Reto 3
 Operaciones con Matrices:
@@ -84,9 +83,11 @@ Asegúrate de manejar correctamente los casos en los que las matrices no tengan 
 dimensiones para poder realizar la operación de suma. Las matrices se representan como
 arrays bidimensionales de números.*/
 
-const matriz1 = [[], []]
-const matriz2 = [[], []]
-const sumarMatrices = () => {}
+const matriz1 = [[],[]]
+const matriz2 = [[],[]]
+const sumarMatrices =()=>{
+
+}
 
 /*Reto 4
 Generación de Contraseñas Aleatorias:
@@ -97,22 +98,10 @@ requisitos:
 ● Debe contener al menos un número.
 ● Debe contener al menos un carácter especial de la siguiente lista: !@#$%^&*.
 */
-
-const generarContraseña = (longitud: number): string => {
-  let pass: string = ""
-  const characters: string =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*"
-  const charactersLength: number = characters.length
-  let counter: number = 0
-  while (counter < longitud) {
-    pass += characters.charAt(Math.floor(Math.random() * charactersLength))
-    counter += 1
-  }
-
-  return pass
+const generarContraseña = (longitud:number):string => {
+  let pass = 
+  return 
 }
-
-console.log(generarContraseña(12))
 
 /*Reto 5
 Validación de Direcciones de Correo Electrónico:
