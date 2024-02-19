@@ -91,44 +91,50 @@ const matriz1 = [
 ]
 const matriz2 = [[2, 5], [8, 44, 3], [2]]
 // const sumarMatrices = (array1: number[][], array2: number[][]): number[] => {
-// let arr1: number[] = []
-// let arr2: number[] = []
-// let resultado: number = 0
-// matriz1.forEach((number) => {
-//   number.forEach((cifra) => {
-//     resultado += cifra
-//     arr1.push(resultado)
-//   })
-// })
+  // let arr1: number[] = []
+  // let arr2: number[] = []
+  // let resultado: number = 0
+  // matriz1.forEach((number) => {
+  //   number.forEach((cifra) => {
+  //     resultado += cifra
+  //     arr1.push(resultado)
+  //   })
+  // })
 
-// matriz2.forEach((number) => {
-//   number.forEach((cifra) => {
-//     resultado += cifra
-//     arr2.push(resultado)
-//   })
-// })
-// return resultado
+  // matriz2.forEach((number) => {
+  //   number.forEach((cifra) => {
+  //     resultado += cifra
+  //     arr2.push(resultado)
+  //   })
+  // })
+  // return resultado
 
-//no, porque está sumando todos los valores y devuelve un número
+  const sumarMatrices = (
+    array1: number[][],
+    array2: number[][]
+  ): number[][] | null => {
+    // Verificar si las matrices tienen las mismas dimensiones
+    // if (
+    //   array1.length !== array2.length ||
+    //   array1.some((row, i) => row.length !== array2[i].length)
+    // ) {
+    //   return null // Matrices no tienen las mismas dimensiones, devolver null
+    // }
 
-const sumarMatrices = (array1: number[][], array2: number[][]): number[][] => {
-  const resultado: number[][] = []
+    const resultado: number[][] = []
 
-  array1.forEach((row, i) => {
-    const fila: number[] = []
-
-    row.forEach((element, j) => {
-      const num1 = element || 0 //si no existe se toma como 0
-      const num2 = (array2[i] && array2[i][j]) || 0 // Si el segundo número no existe, se toma como 0
-      fila.push(num1 + num2)
+    array1.forEach((row, i) => {
+      const fila: number[] = []
+      row.forEach((element, j) => {
+        fila.push(element + array2[i][j] )
+      })
+      resultado.push(fila)
     })
-    resultado.push(fila)
-  })
 
-  return resultado
-}
+    return resultado
+  }
 
-console.log("sumarMatrices", sumarMatrices(matriz1, matriz2))
+console.log("sumarMatrices",sumarMatrices(matriz1, matriz2))
 
 /*Reto 4
 Generación de Contraseñas Aleatorias:

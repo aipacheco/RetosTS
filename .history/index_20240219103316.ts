@@ -118,7 +118,7 @@ const sumarMatrices = (array1: number[][], array2: number[][]): number[][] => {
     const fila: number[] = []
 
     row.forEach((element, j) => {
-      const num1 = element || 0 //si no existe se toma como 0
+      const num1 = element || 0
       const num2 = (array2[i] && array2[i][j]) || 0 // Si el segundo número no existe, se toma como 0
       fila.push(num1 + num2)
     })

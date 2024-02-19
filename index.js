@@ -44,8 +44,6 @@ const validarContraseña = (password) => {
     return resultado;
 };
 console.log("Validador de contraseña: ", validarContraseña("hojjjjjjjjj3la&A"));
-console.dir("Validador de contraseña: dir", validarContraseña("hojjjjjjjjj3la&A"));
-console.info("Validador de contraseña: info", validarContraseña("hojjjjjjjjj3la&A"));
 /*Reto 3
 Operaciones con Matrices:
 Escribe una función llamada sumarMatrices que tome dos matrices como argumentos y
@@ -53,9 +51,44 @@ devuelva una nueva matriz que sea el resultado de la suma de las dos matrices de
 Asegúrate de manejar correctamente los casos en los que las matrices no tengan las mismas
 dimensiones para poder realizar la operación de suma. Las matrices se representan como
 arrays bidimensionales de números.*/
-const matriz1 = [[], []];
-const matriz2 = [[], []];
-const sumarMatrices = () => { };
+const matriz1 = [
+    [1],
+    [4, 5, 6],
+    [7, 8, 9],
+];
+const matriz2 = [[2, 5], [8, 44, 3], [2]];
+// const sumarMatrices = (array1: number[][], array2: number[][]): number[] => {
+// let arr1: number[] = []
+// let arr2: number[] = []
+// let resultado: number = 0
+// matriz1.forEach((number) => {
+//   number.forEach((cifra) => {
+//     resultado += cifra
+//     arr1.push(resultado)
+//   })
+// })
+// matriz2.forEach((number) => {
+//   number.forEach((cifra) => {
+//     resultado += cifra
+//     arr2.push(resultado)
+//   })
+// })
+// return resultado
+//no, porque está sumando todos los valores y devuelve un número
+const sumarMatrices = (array1, array2) => {
+    const resultado = [];
+    array1.forEach((row, i) => {
+        const fila = [];
+        row.forEach((element, j) => {
+            const num1 = element || 0;
+            const num2 = (array2[i] && array2[i][j]) || 0; // Si el segundo número no existe, se toma como 0
+            fila.push(num1 + num2);
+        });
+        resultado.push(fila);
+    });
+    return resultado;
+};
+console.log("sumarMatrices", sumarMatrices(matriz1, matriz2));
 /*Reto 4
 Generación de Contraseñas Aleatorias:
 Escribe una función llamada generarContraseña que tome un parámetro longitud de tipo
@@ -72,6 +105,8 @@ const generarContraseña = (longitud) => {
     let counter = 0;
     while (counter < longitud) {
         pass += characters.charAt(Math.floor(Math.random() * charactersLength));
+        //charAt es un método de string que se usa para obtener el carácter en una posición específica dentro de un string
+        //en este caso es random
         counter += 1;
     }
     return pass;

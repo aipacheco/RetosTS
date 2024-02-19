@@ -90,45 +90,23 @@ const matriz1 = [
   [7, 8, 9],
 ]
 const matriz2 = [[2, 5], [8, 44, 3], [2]]
-// const sumarMatrices = (array1: number[][], array2: number[][]): number[] => {
-// let arr1: number[] = []
-// let arr2: number[] = []
-// let resultado: number = 0
-// matriz1.forEach((number) => {
-//   number.forEach((cifra) => {
-//     resultado += cifra
-//     arr1.push(resultado)
-//   })
-// })
-
-// matriz2.forEach((number) => {
-//   number.forEach((cifra) => {
-//     resultado += cifra
-//     arr2.push(resultado)
-//   })
-// })
-// return resultado
-
-//no, porque está sumando todos los valores y devuelve un número
-
-const sumarMatrices = (array1: number[][], array2: number[][]): number[][] => {
-  const resultado: number[][] = []
-
-  array1.forEach((row, i) => {
-    const fila: number[] = []
-
-    row.forEach((element, j) => {
-      const num1 = element || 0 //si no existe se toma como 0
-      const num2 = (array2[i] && array2[i][j]) || 0 // Si el segundo número no existe, se toma como 0
-      fila.push(num1 + num2)
+const sumarMatrices = (array1: number[][], array2: number[][]): number => {
+  let : number[] = []
+let resultado
+  matriz1.forEach((number) => {
+    number.forEach((cifra) => {
+      resultado += cifra
     })
-    resultado.push(fila)
   })
 
+  matriz2.forEach((number) => {
+    number.forEach((cifra) => {
+      resultado += cifra
+    })
+  })
   return resultado
 }
-
-console.log("sumarMatrices", sumarMatrices(matriz1, matriz2))
+console.log(sumarMatrices(matriz1, matriz2))
 
 /*Reto 4
 Generación de Contraseñas Aleatorias:
