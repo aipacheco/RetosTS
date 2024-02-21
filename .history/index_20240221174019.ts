@@ -1,19 +1,43 @@
-"use strict";
-const UserRoles = {
-    ADMIN: { id: 1, name: "admin" },
-    MANAGER: { id: 2, name: "manager" },
-    USER: { id: 3, name: "user" },
-};
-console.log(UserRoles);
-const getRoleFromRoleName = (role) => {
-    let result = UserRoles[role] ? UserRoles[role] : undefined;
-    //   if (UserRoles[role]){
-    //     return UserRoles[role]
-    //   }else return undefined
-    return result;
-};
+/*Reto 1
+Obtener Rol por Nombre desde un Conjunto Predefinido en TypeScript
+Desarrollar una función en TypeScript llamada getRoleFromRoleName que reciba como parámetro el nombre
+de un rol como una cadena y devuelva el objeto de rol correspondiente desde un conjunto predefinido de roles.
+El conjunto de roles se define como sigue:
+*/
+/*
+Obtener Rol por Nombre desde un Conjunto Predefinido en TypeScript
+La función getRoleFromRoleName debe buscar el rol por su nombre dentro del conjunto
+predefinido y devolver el objeto de rol si se encuentra una coincidencia, o undefined si no se
+encuentra ninguna coincidencia.
+Uso de Ejemplo:
+const roleName = "admin";
+const role = getRoleFromRoleName(roleName);
+console.log(role); // Salida: { id: 1, name: "admin" } (o el objeto de rol
+correspondiente)
+*/
+interface Role {
+  id: number
+  name: string
+}
+
+const UserRoles: { [key: string]: Role } = {
+  ADMIN: { id: 1, name: "admin" },
+  MANAGER: { id: 2, name: "manager" },
+  USER: { id: 3, name: "user" },
+}
+
+console.log(UserRoles)
+
+const getRoleFromRoleName = (role: string): Role | undefined => {
+  let result = UserRoles[role] ? UserRoles[role] : undefined
+  //   if (UserRoles[role]){
+  //     return UserRoles[role]
+  //   }else return undefined
+  return result
+}
 //el uso de [] en userrole es para apuntar a la clave de ese objeto, que es COMO un array de objs
-console.log(getRoleFromRoleName("ADMIN"));
+console.log(getRoleFromRoleName("ADMIN"))
+
 /*Reto 2
 Validación de Contraseña:
 Escribe una función llamada validarContraseña que tome una cadena como argumento y verifique si
@@ -25,25 +49,33 @@ cumple con los siguientes criterios para ser considerada una contraseña segura:
 - Debe contener al menos un carácter especial de la siguiente lista: @$!%*?&.
 La función debe devolver true si la contraseña cumple con todos los criterios y false en caso contrario.
 */
-const validarContraseña = (password) => {
-    let resultado = true;
-    //regex
-    const tieneMayuscula = (password) => /[A-Z]/.test(password);
-    const tieneMinuscula = (password) => /[a-z]/.test(password);
-    const tieneNumero = (password) => /[0-9]/.test(password);
-    const tieneCaracterEspecial = (password) => /[@$!%*?&]/.test(password);
-    if (password.length < 8 ||
-        !tieneMayuscula(password) ||
-        !tieneMinuscula(password) ||
-        !tieneNumero(password) ||
-        !tieneCaracterEspecial(password)
+
+const validarContraseña = (password: string): boolean => {
+  let resultado: boolean = true
+
+  //regex
+  const tieneMayuscula = (password: string) => /[A-Z]/.test(password)
+  const tieneMinuscula = (password: string) => /[a-z]/.test(password)
+  const tieneNumero = (password: string) => /[0-9]/.test(password)
+  const tieneCaracterEspecial = (password: string) => /[@$!%*?&]/.test(password)
+
+  if (
+    password.length < 8 ||
+    !tieneMayuscula(password) ||
+    !tieneMinuscula(password) ||
+    !tieneNumero(password) ||
+    !tieneCaracterEspecial(password)
+
     //hay que llamar a las funciones arrow de arriba pasando el param password
-    ) {
-        resultado = false;
-    }
-    return resultado;
-};
-console.log("Validador de contraseña: ", validarContraseña("hojjjjjjjjj3la&A"));
+  ) {
+    resultado = false
+  }
+
+  return resultado
+}
+
+console.log("Validador de contraseña: ", validarContraseña("hojjjjjjjjj3la&A"))
+
 /*Reto 3
 Operaciones con Matrices:
 Escribe una función llamada sumarMatrices que tome dos matrices como argumentos y
@@ -52,16 +84,13 @@ devuelva una nueva matriz que sea el resultado de la suma de las dos matrices de
 Asegúrate de manejar correctamente los casos en los que las matrices no tengan las mismas
 dimensiones para poder realizar la operación de suma. Las matrices se representan como
 arrays bidimensionales de números.*/
+
 const matriz1 = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-];
-const matriz2 = [
-    [1, 2, 5],
-    [8, 44, 3],
-    [2, 1, 1],
-];
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+]
+const matriz2 = [[2, 5], [8, 44, 3], [2]]
 // const sumarMatrices = (array1: number[][], array2: number[][]): number[] => {
 // let arr1: number[] = []
 // let arr2: number[] = []
@@ -72,6 +101,7 @@ const matriz2 = [
 //     arr1.push(resultado)
 //   })
 // })
+
 // matriz2.forEach((number) => {
 //   number.forEach((cifra) => {
 //     resultado += cifra
@@ -79,13 +109,15 @@ const matriz2 = [
 //   })
 // })
 // return resultado
+
 //no, porque está sumando todos los valores y devuelve un número
-const sumarMatrices = (array1, array2) => {
-    let resultado = [];
-    resultado = array1.map((fila, i) => fila.map((valor, j) => valor + array2[i][j]));
-    return resultado;
-};
-console.log("suma de sumarMatrices", sumarMatrices(matriz1, matriz2));
+
+const sumarMatrices = (array1: number[][], array2: number[][]): number[][] => {
+
+    return array1.map((fila, i) => fila.map((valor, j) => valor + array2[i][j]));
+    }
+sumarMatrices(matriz1, matriz2)
+
 /*Reto 4
 Generación de Contraseñas Aleatorias:
 Escribe una función llamada generarContraseña que tome un parámetro longitud de tipo
@@ -95,20 +127,25 @@ requisitos:
 ● Debe contener al menos un número.
 ● Debe contener al menos un carácter especial de la siguiente lista: !@#$%^&*.
 */
-const generarContraseña = (longitud) => {
-    let pass = "";
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
-    const charactersLength = characters.length;
-    let counter = 0;
-    while (counter < longitud) {
-        pass += characters.charAt(Math.floor(Math.random() * charactersLength));
-        //charAt es un método de string que se usa para obtener el carácter en una posición específica dentro de un string
-        //en este caso es random
-        counter += 1;
-    }
-    return pass;
-};
-console.log(generarContraseña(12));
+
+const generarContraseña = (longitud: number): string => {
+  let pass: string = ""
+  const characters: string =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*"
+  const charactersLength: number = characters.length
+  let counter: number = 0
+  while (counter < longitud) {
+    pass += characters.charAt(Math.floor(Math.random() * charactersLength))
+    //charAt es un método de string que se usa para obtener el carácter en una posición específica dentro de un string
+    //en este caso es random
+    counter += 1
+  }
+
+  return pass
+}
+
+console.log(generarContraseña(12))
+
 /*Reto 5
 Validación de Direcciones de Correo Electrónico:
 Escribe una función llamada validarCorreoElectrónico que tome una cadena como argumento y
@@ -121,16 +158,21 @@ espacios ni símbolos especiales.
 - La función debe devolver true si la cadena cumple con el patrón de una dirección de correo
 electrónico válida y false en caso contrario.
 */
-let email = "ana@gmail.com";
-const especiales = /[^\w.@]/g;
-const validarCorreoElectrónico = (email) => {
-    let comprobar = false;
-    if (!especiales.test(email)) {
-        comprobar = true;
-    }
-    return comprobar;
-};
-console.log("validación de correo", validarCorreoElectrónico(email));
+
+let email: string = "ana@gmail.com"
+const especiales: RegExp = /[^\w.@]/g
+
+const validarCorreoElectrónico = (email: string): boolean => {
+  let comprobar: boolean = false
+
+  if (!especiales.test(email)) {
+    comprobar = true
+  }
+  return comprobar
+}
+
+console.log("validación de correo", validarCorreoElectrónico(email))
+
 /*Reto 6
 Cifrado César:
 Escribe una función llamada cifradoCesar que tome dos parámetros: una cadena de texto y un
@@ -139,6 +181,7 @@ utilizando el cifrado César con el desplazamiento especificado y devolver la ca
 César consiste en desplazar cada letra en el alfabeto un número fijo de posiciones hacia la derecha. Si
 la letra alcanza el final del alfabeto, continúa desde el principio. Los números y otros caracteres no
 deben ser cifrados.*/
+
 /*Reto 7
 Juego de cartas
 ● El objetivo es usar arrays en TypeScript para representar un mazo de cartas.
@@ -150,60 +193,62 @@ Juego de cartas
 ● 5. Crea una función que reparte una carta del mazo.
 ● 6. Prueba las funciones.
 */
-const mazo = [
-    "As de Corazones",
-    "2 de Corazones",
-    "3 de Corazones",
-    "4 de Corazones",
-    "5 de Corazones",
-    "6 de Corazones",
-    "7 de Corazones",
-    "8 de Corazones",
-    "9 de Corazones",
-    "10 de Corazones",
-    "J de Corazones",
-    "Q de Corazones",
-    "K de Corazones",
-    "As de Diamantes",
-    "2 de Diamantes",
-    "3 de Diamantes",
-    "4 de Diamantes",
-    "5 de Diamantes",
-    "6 de Diamantes",
-    "7 de Diamantes",
-    "8 de Diamantes",
-    "9 de Diamantes",
-    "10 de Diamantes",
-    "J de Diamantes",
-    "Q de Diamantes",
-    "K de Diamantes",
-    "As de Tréboles",
-    "2 de Tréboles",
-    "3 de Tréboles",
-    "4 de Tréboles",
-    "5 de Tréboles",
-    "6 de Tréboles",
-    "7 de Tréboles",
-    "8 de Tréboles",
-    "9 de Tréboles",
-    "10 de Tréboles",
-    "J de Tréboles",
-    "Q de Tréboles",
-    "K de Tréboles",
-    "As de Picas",
-    "2 de Picas",
-    "3 de Picas",
-    "4 de Picas",
-    "5 de Picas",
-    "6 de Picas",
-    "7 de Picas",
-    "8 de Picas",
-    "9 de Picas",
-    "10 de Picas",
-    "J de Picas",
-    "Q de Picas",
-    "K de Picas",
-];
+
+const mazo: string[] = [
+  "As de Corazones",
+  "2 de Corazones",
+  "3 de Corazones",
+  "4 de Corazones",
+  "5 de Corazones",
+  "6 de Corazones",
+  "7 de Corazones",
+  "8 de Corazones",
+  "9 de Corazones",
+  "10 de Corazones",
+  "J de Corazones",
+  "Q de Corazones",
+  "K de Corazones",
+  "As de Diamantes",
+  "2 de Diamantes",
+  "3 de Diamantes",
+  "4 de Diamantes",
+  "5 de Diamantes",
+  "6 de Diamantes",
+  "7 de Diamantes",
+  "8 de Diamantes",
+  "9 de Diamantes",
+  "10 de Diamantes",
+  "J de Diamantes",
+  "Q de Diamantes",
+  "K de Diamantes",
+  "As de Tréboles",
+  "2 de Tréboles",
+  "3 de Tréboles",
+  "4 de Tréboles",
+  "5 de Tréboles",
+  "6 de Tréboles",
+  "7 de Tréboles",
+  "8 de Tréboles",
+  "9 de Tréboles",
+  "10 de Tréboles",
+  "J de Tréboles",
+  "Q de Tréboles",
+  "K de Tréboles",
+  "As de Picas",
+  "2 de Picas",
+  "3 de Picas",
+  "4 de Picas",
+  "5 de Picas",
+  "6 de Picas",
+  "7 de Picas",
+  "8 de Picas",
+  "9 de Picas",
+  "10 de Picas",
+  "J de Picas",
+  "Q de Picas",
+  "K de Picas",
+]
+
 /*Reto 8
 Extraer Valor Aleatorio de un Array en TypeScript
 Desarrollar una función en TypeScript utilizando arrow function que reciba un arreglo como entrada
@@ -217,6 +262,7 @@ const authors = ["John Doe", "Jane Smith", "Alice Johnson", "Bob Brown"];
 const randomAuthor = getRandomValueFromArray(authors);
 console.log("Autor Aleatorio:", randomAuthor);
 */
+
 /*Reto 9
 Extracción de Subarray Aleatorio en TypeScript
 Desarrollar una función getRandomSubarray en TypeScript que extraiga un subarreglo
